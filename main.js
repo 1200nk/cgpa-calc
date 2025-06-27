@@ -48,3 +48,24 @@ document.getElementById("cgpa-form").addEventListener("submit", (e) => {
     result.innerHTML = `<h5 class="text-dnger">Please enter valid inputs.</h5>`;
   }
 });
+
+// predict.html
+
+function predictSGPA() {
+      const curCGPA = parseFloat(document.getElementById('curCGPA').value);
+      const pastCredits = parseFloat(document.getElementById('pastCredits').value);
+      const semCredits = parseFloat(document.getElementById('semCredits').value);
+      const targetCGPA = parseFloat(document.getElementById('targetCGPA').value);
+      const resultBox = document.getElementById('sgpaResult');
+
+      if (!isNaN(curCGPA) && !isNaN(pastCredits) && !isNaN(semCredits) && !isNaN(targetCGPA) && semCredits > 0) {
+        const totalCredits = pastCredits + semCredits;
+        const requiredSGPA = ((targetCGPA * totalCredits) - (curCGPA * pastCredits)) / semCredits;
+        resultBox.style.display = 'block';
+        resultBox.innerText = `You need an SGPA of ${requiredSGPA.toFixed(2)} this semester.`;
+      } else {
+        resultBox.style.display = 'block';
+        resultBox.classList.replace('alert-primary', 'alert-danger');
+        resultBox.innerText = 'Please enter all fields correctly.';
+      }
+    }
