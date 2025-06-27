@@ -68,4 +68,4 @@ function predictSGPA() {
         resultBox.classList.replace('alert-primary', 'alert-danger');
         resultBox.innerText = 'Please enter all fields correctly.';
       }
-    }
+}
